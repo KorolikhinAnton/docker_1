@@ -31,7 +31,7 @@ async function start () {
   // Init Nuxt.js
   const nuxt = await loadNuxt(dev ? 'dev' : 'start')
 
-  const { host, port } = nuxt.options.server
+  const { port } = nuxt.options.server
   app.get('/version', (req, res) => res.status(200).send('1.0.0'))
 
   app.get('/getList', (req, res) => {
@@ -81,9 +81,9 @@ async function start () {
   }
 
   // Listen the server
-  app.listen(port, host)
+  app.listen(port, '0.0.0.0')
   consola.ready({
-    message: `Server listening on http://${host}:${port}`,
+    message: `Server listening on http://localhost:${port}`,
     badge: true
   })
 }
